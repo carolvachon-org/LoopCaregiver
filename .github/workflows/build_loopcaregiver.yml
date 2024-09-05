@@ -23,26 +23,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-      
-         echo "Downloading code to support 10 Minute Remote Passwords"
-         cd Loop
-         git remote add gestrich https://github.com/gestrich/Loop 
-         git fetch gestrich bugfix/2024-08-expired-command-8-2-24
-         git cherry-pick fetch_head;
-         cd ..
-         cd LoopKit
-         git remote add gestrich https://github.com/gestrich/LoopKit
-         git fetch gestrich bugfix/2024-08-expired-command-8-2-24
-         git cherry-pick fetch_head;
-         cd ..
-         cd NightscoutService
-         git remote add gestrich https://github.com/gestrich/NightscoutService
-         git fetch gestrich bugfix/2024-08-expired-command-8-2-24
-         git cherry-pick fetch_head;
-         cd ..
-
-      
-      
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
